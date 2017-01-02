@@ -1,0 +1,42 @@
+{{#if model}}
+  {{#paper-card as |card|}}
+      <div class="layout-column flex-xs flex-gt-xs-50">
+        {{card.image src=model.image alt=model.name title=model.name}}
+      </div>
+      <div class="layout-row">
+        {{#card.title as |title|}}
+          {{#title.text as |text|}}
+            {{#text.headline}}{{model.name}}{{/text.headline}}
+            {{#text.subhead}}Entrenador: {{model.coach}}{{/text.subhead}}
+          {{/title.text}}
+        {{/card.title}}
+
+        {{#card.actions class="layout-column"}}
+          {{#paper-button iconButton=true accent=true}}
+            {{paper-icon "favorite"}}
+          {{/paper-button}}
+
+          {{#paper-button iconButton=true primary=true}}
+            {{paper-icon "share"}}
+          {{/paper-button}}
+        {{/card.actions}}
+      </div>
+
+      {{#card.content}}
+      {{!Este es el bloque de descripcion}}
+          <p>{{model.description}}</p>
+          {{#paper-list}}
+            {{#paper-subheader}}Jugadores{{/paper-subheader}}
+            {{#each model.players as |player|}}
+              {{#paper-item class="md-3-line"}}
+                  <img src={{player.profile_image}} alt={{player.name}} class="md-avatar">
+                  <div class="md-list-item-text">
+                      <h3><strong><b>{{player.name}} {{player.last_name}}</b></strong></h3>
+                      <h4>{{player.role}}</h4>
+                  </div>
+              {{/paper-item}}
+            {{/each}}
+          {{/paper-list}}
+      {{/card.content}}
+  {{/paper-card}}
+{{/if}}

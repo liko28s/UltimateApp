@@ -1,0 +1,43 @@
+{{#if model}}
+  {{#paper-card as |card|}}
+      <div class="layout-column flex-xs flex-gt-xs-50">
+        {{card.image src=model.profile_image alt=model.name title=model.name}}
+      </div>
+
+      <div class="layout-row">
+        {{#card.title as |title|}}
+          {{#title.text as |text|}}
+            {{#text.headline}}{{model.name}} {{model.last_name}}{{/text.headline}}
+            {{#text.subhead}}Equipo: {{model.age}}{{/text.subhead}}
+            {{#text.subhead}}Posicion: {{model.age}}{{/text.subhead}}
+            {{#text.subhead}}Edad: {{model.age}}{{/text.subhead}}
+            {{#text.subhead}}{{paper-icon "room"}}Ciudad Natal: {{model.age}}{{/text.subhead}}
+            {{#text.subhead}}{{paper-icon "face"}}Bio: {{model.age}}{{/text.subhead}}
+          {{/title.text}}
+        {{/card.title}}
+
+        {{#card.actions class="layout-column"}}
+          {{#paper-button iconButton=true accent=true}}
+            {{paper-icon "favorite"}}
+          {{/paper-button}}
+
+          {{#paper-button iconButton=true primary=true}}
+            {{paper-icon "share"}}
+          {{/paper-button}}
+        {{/card.actions}}
+      </div>
+
+      {{#card.content}}
+      {{!Este es el bloque de descripcion}}
+          <p>{{model.description}}</p>
+          {{#paper-list}}
+            {{#paper-subheader}}Estadisticas{{/paper-subheader}}
+            {{#each model.players as |statistics|}}
+              {{#paper-item class="md-3-line"}}
+                contenido de sus estadisticas
+              {{/paper-item}}
+            {{/each}}
+          {{/paper-list}}
+      {{/card.content}}
+  {{/paper-card}}
+{{/if}}
