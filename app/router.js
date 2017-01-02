@@ -13,6 +13,12 @@ Router.map(function() {
   this.route('players', function() {
     this.route('detail',{path:':player_id'});
   });
+  this.route('scoreboard', function() {
+    this.route('groups');
+    this.route('quarters');
+    this.route('semifinals');
+    this.route('finals');
+  });
 });
 
 export default Router;

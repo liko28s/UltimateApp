@@ -5,8 +5,10 @@
         <img src={{team.image}} alt={{team.name}} class="md-avatar">
         <div class="md-list-item-text">
             <strong><h3><b>{{team.name}}</b></h3></strong>
-            <em><h4>Entrenador: {{team.coach}}</h4></em>
-            <em><h4>Jugadores: {{team.players.length}}</h4></em>
+          {{#if team.coach.id}}
+              <h4>Entrenador: <em>{{team.coach.name}} {{team.coach.last_name}}</em></h4>
+          {{/if}}
+            <h4>Jugadores:<em> {{team.players.length}}</em></h4>
             <p>{{team.description}}</p>
         </div>
         {{!TODO esto debe enviar el equipo a la lista de favoritos del usuario}}

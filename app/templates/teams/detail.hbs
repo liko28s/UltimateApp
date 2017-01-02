@@ -7,7 +7,8 @@
         {{#card.title as |title|}}
           {{#title.text as |text|}}
             {{#text.headline}}{{model.name}}{{/text.headline}}
-            {{#text.subhead}}Entrenador: {{model.coach}}{{/text.subhead}}
+
+
           {{/title.text}}
         {{/card.title}}
 
@@ -26,7 +27,14 @@
       {{!Este es el bloque de descripcion}}
           <p>{{model.description}}</p>
           {{#paper-list}}
-            {{#paper-subheader}}Jugadores{{/paper-subheader}}
+            {{#if model.coach.id}}
+              {{#paper-subheader}}<strong>Entrenador</strong>{{/paper-subheader}}
+              {{#paper-item class="md-3-line"}}
+                  <img src={{model.coach.profile_image}} alt={{model.coach.name}} class="md-avatar">
+                  <div class="md-list-item-text"><h3><strong><b>{{model.coach.name}} {{model.coach.last_name}}</b></strong></h3></div>
+              {{/paper-item}}
+            {{/if}}
+            {{#paper-subheader}}<strong>Jugadores</strong>{{/paper-subheader}}
             {{#each model.players as |player|}}
               {{#paper-item class="md-3-line"}}
                   <img src={{player.profile_image}} alt={{player.name}} class="md-avatar">
