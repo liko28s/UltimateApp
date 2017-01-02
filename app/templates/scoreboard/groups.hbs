@@ -1,0 +1,44 @@
+<div align="center"><strong>Fase de Grupos</strong></div>
+{{#paper-list}}
+  {{#each model as |group|}}
+    {{#if group.teams.length}}
+      {{#paper-subheader}}
+        {{paper-divider}}{{paper-divider}}
+      {{/paper-subheader}}
+      <div align="center"><strong><u>{{group.name}}</u></strong></div>
+    {{/if}}
+    {{#each group.teams as |team index|}}
+      {{#paper-item class="md-3-line"}}
+        {{paper-divider inset=true}}
+        <img src={{team.image}} alt={{team.name}} class="md-avatar">
+        <div class="md-list-item-text">
+            <h3><strong><b>{{sum index 1}}° {{team.name}}</b></strong></h3>
+            <div class="layout-row" align="center">
+                <div class="layout-column flex layout-align-center">
+                    <u>PJ</u>
+                    <span>{{team.pj}}</span>
+                </div>
+                <div class="layout-column flex layout-align-center">
+                    <u>PG</u>
+                    <span>{{team.pg}}</span>
+                </div>
+                <div class="layout-column flex layout-align-center">
+                    <u>PP</u>
+                    <span>{{team.pp}}</span>
+                </div>
+            </div>
+            <div class="layout-row">
+                <div class="layout-column flex">
+                  {{#if team.eliminated}}
+                      <span style="color: darkred">Eliminado</span>
+                  {{/if}}
+                </div>
+            </div>
+        </div>
+        <div class="layout-row flex layout-align-center">
+            <strong>{{team.points}} Puntos</strong>
+        </div>
+      {{/paper-item}}
+    {{/each}}
+  {{/each}}
+{{/paper-list}}
