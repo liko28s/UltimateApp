@@ -20,6 +20,7 @@ Router.map(function() {
     this.route('finals');
   });
   this.route('matches');
+  this.route('donations');
 });
 
 export default Router;
