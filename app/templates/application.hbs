@@ -28,7 +28,7 @@
 
         {{#paper-item onClick=(action (transition-to 'scoreboard'))}}
           {{paper-icon "list"}}
-          <p>Tabla de Posiciones</p>
+          <p>Fases del Torneo</p>
         {{/paper-item}}
 
         {{#paper-item onClick=(action (transition-to 'teams'))}}
@@ -36,9 +36,13 @@
           <p>Equipos</p>
         {{/paper-item}}
 
-        {{#paper-item onClick=(action (transition-to 'players'))}}
-          {{paper-icon "person"}}
-          <p>Jugadores</p>
+        {{!#paper-item onClick=(action (transition-to 'players'))}}
+          {{!paper-icon "person"}}
+          <!--p>Jugadores</p-->
+        {{!/paper-item}}
+        {{#paper-item onClick=(action (transition-to 'donations'))}}
+          {{paper-icon "face"}}
+          <p>Más Información</p>
         {{/paper-item}}
       {{/paper-list}}
     {{/paper-content}}
@@ -53,9 +57,9 @@
             {{paper-icon "menu"}}
           {{/paper-button}}
         {{/paper-sidenav-toggle}}
-        <h2>
-            Torneo Ultimate Guarne
-        </h2>
+        <h3>
+          {{title}}
+        </h3>
         <span class="flex"></span>
         {{!TODO añadir algo util aqui, por ejemplo creditos y cosas de nextria}}
         {{#paper-button iconButton=true}}

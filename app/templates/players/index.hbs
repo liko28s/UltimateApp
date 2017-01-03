@@ -2,15 +2,19 @@
   {{#paper-subheader}}Jugadores{{/paper-subheader}}
   {{#each model as |player|}}
     {{#paper-item class="md-3-line" onClick=(action (transition-to 'players.detail' player.id)) as |control| }}
-        <img src={{player.profile_image}} alt={{player.name}} class="md-avatar">
+        {{#if player.profile_image}}
+          <img src={{player.profile_image}} alt={{player.name}} class="md-avatar">
+        {{else}}
+          {{paper-icon "person"}}
+        {{/if}}
         <div class="md-list-item-text">
             <strong><h3><b>{{player.name}} {{player.last_name}}</b></h3></strong>
             <p>Equipo: {{player.team_id.name}}</p>
         </div>
         {{!TODO esto debe enviar a un dialog con los detalles del usuario}}
-        {{#control.button secondary=true iconButton=true raised=true accent=true}}
-          {{paper-icon "favorite"}}
-        {{/control.button}}
+        {{!#control.button secondary=true iconButton=true raised=true accent=true}}
+          {{!paper-icon "favorite"}}
+        {{!/control.button}}
     {{/paper-item}}
   {{/each}}
 {{/paper-list}}

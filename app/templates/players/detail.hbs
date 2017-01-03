@@ -1,18 +1,38 @@
 {{#if model}}
   {{#paper-card as |card|}}
       <div class="layout-column flex-xs flex-gt-xs-50">
-        {{card.image src=model.profile_image alt=model.name title=model.name}}
+        {{#if model.profile_image}}
+          {{card.image src=model.profile_image alt=model.name title=model.name}}
+        {{/if}}
       </div>
 
       <div class="layout-row">
         {{#card.title as |title|}}
           {{#title.text as |text|}}
-            {{#text.headline}}{{model.name}} {{model.last_name}}{{/text.headline}}
-            {{#text.subhead}}Equipo: {{model.age}}{{/text.subhead}}
-            {{#text.subhead}}Posicion: {{model.age}}{{/text.subhead}}
-            {{#text.subhead}}Edad: {{model.age}}{{/text.subhead}}
-            {{#text.subhead}}{{paper-icon "room"}}Ciudad Natal: {{model.age}}{{/text.subhead}}
-            {{#text.subhead}}{{paper-icon "face"}}Bio: {{model.age}}{{/text.subhead}}
+
+            {{#text.headline}}
+              {{model.name}} {{model.last_name}}
+            {{/text.headline}}
+
+            {{#text.headline}}
+                <em>"{{model.nick_name}}"</em>
+            {{/text.headline}}
+
+            {{#text.subhead}}
+                <strong>Equipo:</strong> {{model.team_id.name}}
+            {{/text.subhead}}
+
+            {{#text.subhead}}
+            <strong>Número:</strong> {{model.number}}
+            {{/text.subhead}}
+              <div class="layout-row">
+                {{#if model.vegetarian}}
+                    <img src="/assets/images/carrot.png" style="height:30px;width:auto">
+                {{/if}}
+                {{#if model.camping}}
+                    <img src="/assets/images/camping.jpg" style="height:30px;width:auto">
+                {{/if}}
+              </div>
           {{/title.text}}
         {{/card.title}}
 
@@ -34,7 +54,7 @@
             {{#paper-subheader}}Estadisticas{{/paper-subheader}}
             {{#each model.players as |statistics|}}
               {{#paper-item class="md-3-line"}}
-                contenido de sus estadisticas
+                  contenido de sus estadisticas
               {{/paper-item}}
             {{/each}}
           {{/paper-list}}

@@ -5,5 +5,6 @@ export default DS.Model.extend({
   description: DS.attr('string'),
   coach: DS.belongsTo('coach'),
   image: DS.attr('string'),
-  players: DS.attr()
+  players: DS.attr(),
+  matches:DS.attr()
 });

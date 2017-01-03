@@ -1,4 +1,4 @@
-<div align="center"><strong>Fase de Grupos</strong></div>
+<div align="center"><strong>{{title}}</strong></div>
 {{#paper-list}}
   {{#each model as |group|}}
     {{#if group.teams.length}}
@@ -8,7 +8,7 @@
       <div align="center"><strong><u>{{group.name}}</u></strong></div>
     {{/if}}
     {{#each group.teams as |team index|}}
-      {{#paper-item class="md-3-line"}}
+      {{#paper-item class="md-3-line" onClick=(action 'openDialog' team)}}
         {{paper-divider inset=true}}
         <img src={{team.image}} alt={{team.name}} class="md-avatar">
         <div class="md-list-item-text">
@@ -16,15 +16,15 @@
             <div class="layout-row" align="center">
                 <div class="layout-column flex layout-align-center">
                     <u>PJ</u>
-                    <span>{{team.pj}}</span>
+                    <span>{{team.matches.length}}</span>
                 </div>
                 <div class="layout-column flex layout-align-center">
                     <u>PG</u>
-                    <span>{{team.pg}}</span>
+                    <span>{{team.matches.length}}</span>
                 </div>
                 <div class="layout-column flex layout-align-center">
                     <u>PP</u>
-                    <span>{{team.pp}}</span>
+                    <span>{{team.matches.length}}</span>
                 </div>
             </div>
             <div class="layout-row">
@@ -42,3 +42,58 @@
     {{/each}}
   {{/each}}
 {{/paper-list}}
+
+
+
+
+
+
+{{!TODO PASAR DATOS DEL EQUIPO SELECCIONADO}}
+<div id="scoreboard-detail-dialog">
+</div>
+{{#if showDialog}}
+  {{#paper-dialog
+    onClose=(action "closeDialog" "cancel")
+    parent="#scoreboard-detail-dialog"
+    fullScreen=true
+    clickOutsideToClose=true}}
+    {{#paper-toolbar}}
+      {{#paper-toolbar-tools}}
+          <h2>{{team.name}}</h2>
+          <span class="flex"></span>
+          {{#paper-button iconButton=true onClick=(action "closeDialog" "cancel")}}{{paper-icon icon="close"}}{{/paper-button}}
+      {{/paper-toolbar-tools}}
+    {{/paper-toolbar}}
+
+    {{#paper-dialog-content}}
+
+      {{#each team.matches as |match|}}
+        {{paper-divider}}
+        {{#paper-list}}
+          {{#paper-item}}
+              <div class="layout-row">
+                  <div class="layout-xs-column" align="center">
+                      <div class="layout-row">
+                          <img src={{team.image}} alt={{item.name}} class="md-avatar" width="40" height="40">
+                          <h3><strong><b>{{team.name}}</b></strong></h3>
+                      </div>
+                    {{match.goals}}
+                  </div>
+                  <div style="vertical-align: center">
+                      VS
+                  </div>
+                  <div class="layout-xs-column"  align="center">
+                      <div class="layout-row">
+                          <strong><h3><b>{{match.opponent.name}}</b></h3></strong>
+                          <img src={{match.opponent.image}} alt={{match.opponent.name}} class="md-avatar" width="40" height="40">
+                      </div>
+                    {{match.opponent_goals}}
+                  </div>
+              </div>
+          {{/paper-item}}
+
+        {{/paper-list}}
+      {{/each}}
+    {{/paper-dialog-content}}
+  {{/paper-dialog}}
+{{/if}}

@@ -28,16 +28,26 @@
           <p>{{model.description}}</p>
           {{#paper-list}}
             {{#if model.coach.id}}
-              {{#paper-subheader}}<strong>Entrenador</strong>{{/paper-subheader}}
-              {{#paper-item class="md-3-line"}}
-                  <img src={{model.coach.profile_image}} alt={{model.coach.name}} class="md-avatar">
-                  <div class="md-list-item-text"><h3><strong><b>{{model.coach.name}} {{model.coach.last_name}}</b></strong></h3></div>
+              {{#paper-subheader}}<strong>Representante</strong>{{/paper-subheader}}
+              {{#paper-item class="md-3-line" as |control| }}
+                {{#if player.profile_image}}
+                    <img src={{model.coach.profile_image}} alt={{model.coach.name}} class="md-avatar">
+                {{else}}
+                    {{paper-icon "person"}}
+                {{/if}}
+                  <div class="md-list-item-text">
+                      <h3><strong><b>{{model.coach.name}} {{model.coach.last_name}}</b></strong></h3>
+                  </div>
               {{/paper-item}}
             {{/if}}
             {{#paper-subheader}}<strong>Jugadores</strong>{{/paper-subheader}}
             {{#each model.players as |player|}}
-              {{#paper-item class="md-3-line"}}
-                  <img src={{player.profile_image}} alt={{player.name}} class="md-avatar">
+              {{#paper-item class="md-3-line" onClick=(action (transition-to 'players.detail' player.id))}}
+                {{#if player.profile_image}}
+                    <img src={{player.profile_image}} alt={{player.name}} class="md-avatar">
+                {{else}}
+                  {{paper-icon "person"}}
+                {{/if}}
                   <div class="md-list-item-text">
                       <h3><strong><b>{{player.name}} {{player.last_name}}</b></strong></h3>
                       <h4>{{player.role}}</h4>
