@@ -19,6 +19,7 @@ Router.map(function() {
     this.route('semifinals');
     this.route('finals');
   });
+  this.route('matches');
 });
 
 export default Router;
