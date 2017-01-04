@@ -21,6 +21,7 @@ Router.map(function() {
   });
   this.route('matches');
   this.route('donations');
+  this.route('calendar');
 });
 
 export default Router;

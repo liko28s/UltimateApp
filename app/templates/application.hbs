@@ -25,6 +25,10 @@
           <p>Juegos en Curso</p>
         {{/paper-item}}
 
+        {{#paper-item onClick=(action (transition-to 'calendar'))}}
+          {{paper-icon "date_range"}}
+          <p>Calendario</p>
+        {{/paper-item}}
 
         {{#paper-item onClick=(action (transition-to 'scoreboard'))}}
           {{paper-icon "list"}}
@@ -36,10 +40,6 @@
           <p>Equipos</p>
         {{/paper-item}}
 
-        {{!#paper-item onClick=(action (transition-to 'players'))}}
-          {{!paper-icon "person"}}
-          <!--p>Jugadores</p-->
-        {{!/paper-item}}
         {{#paper-item onClick=(action (transition-to 'donations'))}}
           {{paper-icon "face"}}
           <p>Más Información</p>
