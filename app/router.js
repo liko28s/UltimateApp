@@ -19,7 +19,9 @@ Router.map(function() {
     this.route('semifinals');
     this.route('finals');
   });
-  this.route('matches');
+  this.route('matches', function() {
+    this.route('current',{path:'/current'});
+  });
   this.route('donations');
   this.route('calendar');
 });

@@ -11,7 +11,7 @@
     {{#card.content}}
       {{#paper-list align=center class="layout-row"}}
         {{#paper-item class="layout-row"}}
-            <img src={{match.team_one.image}} alt={{match.team_one.name}} class="md-avatar">
+            <img src={{match.team_one.profile_image}} alt={{match.team_one.name}} class="md-avatar">
             <div class="md-list-item-text">{{match.team_one.name}}</div>
         {{/paper-item}}
 
@@ -21,7 +21,7 @@
 
         {{#paper-item class="layout-row"}}
             <div class="md-list-item-text">{{match.team_two.name}}</div>
-            <img src={{match.team_two.image}} alt={{match.team_two.name}} class="md-avatar">
+            <img src={{match.team_two.profile_image}} alt={{match.team_two.name}} class="md-avatar">
         {{/paper-item}}
 
       {{/paper-list}}

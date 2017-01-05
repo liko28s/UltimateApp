@@ -1,0 +1,35 @@
+{{#paper-card as |card|}}
+  {{#card.title as |title|}}
+    {{#title.text as |text|}}
+      {{#text.headline}}
+      {{!TODO aca debe ir la fecha}}
+      {{/text.headline}}
+    {{/title.text}}
+  {{/card.title}}
+  {{#card.content}}
+    {{#paper-list align=center class="layout-row"}}
+      {{#paper-item class="layout-row less-padding"}}
+          <img src={{match.team_one.profile_image}} alt={{match.team_one.name}} class="md-avatar" style="margin-left: 8px;margin-right: 4px">
+          <div class="md-list-item-text" style="border-right: 8px;border-left: 8px">
+            {{match.team_one.name}} VS {{match.team_two.name}}
+          </div>
+          <img src={{match.team_two.profile_image}} alt={{match.team_two.name}} class="md-avatar" style="margin-right: 8px;margin-left: 4px">
+      {{/paper-item}}
+    {{/paper-list}}
+
+    {{!Hechos del Evento}}
+    {{#paper-list}}
+        <style>
+            .md-avatar.small{
+                width: 18px !important;
+                height:auto !important;
+            }
+        </style>
+        {{#each match.details as |event|}}
+          {{match-event event=event}}
+        {{/each}}
+    {{/paper-list}}
+  {{/card.content}}
+  {{#card.actions}}
+  {{/card.actions}}
+{{/paper-card}}

@@ -1,3 +1,4 @@
+{{title model.name}}
 {{#if model}}
   {{#paper-card as |card|}}
       <div class="layout-column flex-xs flex-gt-xs-50">
@@ -7,8 +8,6 @@
         {{#card.title as |title|}}
           {{#title.text as |text|}}
             {{#text.headline}}{{model.name}}{{/text.headline}}
-
-
           {{/title.text}}
         {{/card.title}}
 
@@ -30,14 +29,16 @@
             {{#if model.coach.id}}
               {{#paper-subheader}}<strong>Representante</strong>{{/paper-subheader}}
               {{#paper-item class="md-3-line" as |control| }}
+
                 {{#if player.profile_image}}
                     <img src={{model.coach.profile_image}} alt={{model.coach.name}} class="md-avatar">
                 {{else}}
-                    {{paper-icon "person"}}
+                  {{paper-icon "person"}}
                 {{/if}}
-                  <div class="md-list-item-text">
-                      <h3><strong><b>{{model.coach.name}} {{model.coach.last_name}}</b></strong></h3>
-                  </div>
+
+                <div class="md-list-item-text">
+                    <h3><strong><b>{{model.coach.name}} {{model.coach.last_name}}</b></strong></h3>
+                </div>
               {{/paper-item}}
             {{/if}}
             {{#paper-subheader}}<strong>Jugadores</strong>{{/paper-subheader}}
@@ -48,10 +49,10 @@
                 {{else}}
                   {{paper-icon "person"}}
                 {{/if}}
-                  <div class="md-list-item-text">
-                      <h3><strong><b>{{player.name}} {{player.last_name}}</b></strong></h3>
-                      <h4>{{player.role}}</h4>
-                  </div>
+                <div class="md-list-item-text">
+                    <h3><strong><b>{{player.name}} {{player.last_name}}</b></strong></h3>
+                    <h4>{{player.role}}</h4>
+                </div>
               {{/paper-item}}
             {{/each}}
           {{/paper-list}}

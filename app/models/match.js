@@ -5,6 +5,7 @@ export default DS.Model.extend({
   arena_id: DS.belongsTo('arena'),
   team_one: DS.belongsTo('team'),
   team_two: DS.belongsTo('team'),
+  event: DS.attr(),
   status: DS.attr(),
   details: DS.attr()
 });
