@@ -31,7 +31,7 @@
               {{#paper-item class="md-3-line" as |control| }}
 
                 {{#if player.profile_image}}
-                  {{async-img src=model.coach.profile_image alt=model.coach.name class="md-avatar"}}
+                  {{async-image src=model.coach.profile_image alt=model.coach.name class="md-avatar"}}
                 {{else}}
                   {{paper-icon "person"}}
                 {{/if}}
@@ -45,7 +45,7 @@
             {{#each model.players as |player|}}
               {{#paper-item class="md-3-line" onClick=(action (transition-to 'players.detail' player.id))}}
                 {{#if player.profile_image}}
-                  {{async-img src=player.profile_image alt=player.name class="md-avatar"}}
+                  {{async-image src=player.profile_image alt=player.name class="md-avatar"}}
                 {{else}}
                   {{paper-icon "person"}}
                 {{/if}}
