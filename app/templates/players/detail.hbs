@@ -27,10 +27,10 @@
           {{/text.subhead}}
             <div class="layout-row">
               {{#if model.vegetarian}}
-                  <img src="/assets/images/carrot.png" style="height:30px;width:auto">
+                {{async-img src="/assets/images/carrot.png" style="height:30px;width:auto"}}
               {{/if}}
               {{#if model.camping}}
-                  <img src="/assets/images/camping.jpg" style="height:30px;width:auto">
+                {{async-img src="/assets/images/camping.jpg" style="height:30px;width:auto"}}
               {{/if}}
             </div>
         {{/title.text}}

@@ -10,7 +10,7 @@
     {{#each group.teams as |team index|}}
       {{#paper-item class="md-3-line" onClick=(action 'openDialog' team)}}
         {{paper-divider inset=true}}
-        <img src={{team.profile_image}} alt={{team.name}} class="md-avatar">
+        {{async-image src=team.profile_image alt=team.name class="md-avatar"}}
         <div class="md-list-item-text">
             <h3><strong><b>{{sum index 1}}° {{team.name}}</b></strong></h3>
             <div class="layout-row" align="center">
@@ -74,7 +74,7 @@
               <div class="layout-row">
                   <div class="layout-xs-column" align="center">
                       <div class="layout-row">
-                          <img src={{team.profile_image}} alt={{item.name}} class="md-avatar" width="40" height="40">
+                        {{async-image src=team.profile_image alt=team.name class="md-avatar" style="width:40px; height:40px"}}
                           <h3><strong><b>{{team.name}}</b></strong></h3>
                       </div>
                     {{match.goals}}
@@ -85,7 +85,7 @@
                   <div class="layout-xs-column"  align="center">
                       <div class="layout-row">
                           <strong><h3><b>{{match.opponent.name}}</b></h3></strong>
-                          <img src={{match.opponent.profile_image}} alt={{match.opponent.name}} class="md-avatar" width="40" height="40">
+                        {{async-image src=match.opponent.profile_image alt=match.opponent.name class="md-avatar" style="width:40px; height:40px"}}
                       </div>
                     {{match.opponent_goals}}
                   </div>

@@ -2,7 +2,7 @@
 {{#if model}}
   {{#paper-card as |card|}}
       <div class="layout-column flex-xs flex-gt-xs-50">
-        {{card.image src=model.image alt=model.name title=model.name}}
+        {{card.image src=model.profile_image alt=model.name title=model.name}}
       </div>
       <div class="layout-row">
         {{#card.title as |title|}}
@@ -31,7 +31,7 @@
               {{#paper-item class="md-3-line" as |control| }}
 
                 {{#if player.profile_image}}
-                    <img src={{model.coach.profile_image}} alt={{model.coach.name}} class="md-avatar">
+                  {{async-img src=model.coach.profile_image alt=model.coach.name class="md-avatar"}}
                 {{else}}
                   {{paper-icon "person"}}
                 {{/if}}
@@ -45,7 +45,7 @@
             {{#each model.players as |player|}}
               {{#paper-item class="md-3-line" onClick=(action (transition-to 'players.detail' player.id))}}
                 {{#if player.profile_image}}
-                    <img src={{player.profile_image}} alt={{player.name}} class="md-avatar">
+                  {{async-img src=player.profile_image alt=player.name class="md-avatar"}}
                 {{else}}
                   {{paper-icon "person"}}
                 {{/if}}

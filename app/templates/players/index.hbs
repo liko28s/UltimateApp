@@ -3,7 +3,7 @@
   {{#each model as |player|}}
     {{#paper-item class="md-3-line" onClick=(action (transition-to 'players.detail' player.id)) as |control| }}
         {{#if player.profile_image}}
-          <img src={{player.profile_image}} alt={{player.name}} class="md-avatar">
+          {{async-img src=player.profile_image alt=player.name class="md-avatar"}}
         {{else}}
           {{paper-icon "person"}}
         {{/if}}
