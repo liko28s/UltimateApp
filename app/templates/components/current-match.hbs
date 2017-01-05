@@ -26,7 +26,8 @@
             }
         </style>
         {{#each match.details as |event|}}
-          {{match-event event=event}}
+          {{match-event event=event match=match}}
+          {{event.team_id.name}}
         {{/each}}
     {{/paper-list}}
   {{/card.content}}
