@@ -1,0 +1,15 @@
+{{#paper-item class="md-3-line" onClick=(action (transition-to 'teams.detail' team.id)) as |control|}}
+  {{async-image src=team.image alt=team.name class="md-avatar"}}
+  <div class="md-list-item-text">
+      <strong><h3><b>{{team.name}}</b></h3></strong>
+    {{#if team.coach.id}}
+        <h4>Representante: <em>{{team.coach.name}} {{team.coach.last_name}}</em></h4>
+    {{/if}}
+      <h4>Jugadores:<em> {{team.players.length}}</em></h4>
+      <p>{{team.description}}</p>
+  </div>
+  {{!TODO esto debe enviar el equipo a la lista de favoritos del usuario}}
+  {{#control.button secondary=true iconButton=true raised=true accent=true}}
+    {{paper-icon "favorite"}}
+  {{/control.button}}
+{{/paper-item}}
