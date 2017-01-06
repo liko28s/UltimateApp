@@ -1,0 +1,28 @@
+<?xml version='1.1' encoding='utf-8'?>
+<widget id="co.nextria.ultimateApp" version="1.1" versionCode="100003" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Torneo Puerta de Oriente</name>
+    <description>
+      Con la aplicación estarás informado con solo unos toques en tu smartphone sobre equipos, jugadores, encuentros deportivos y fases del torneo de Ultimate Puerta de Oriente 2017
+    </description>
+    <author email="info@nextria.co" href="http://nextria.co">
+        Nextria
+    </author>
+    <content src="index.html" />
+    <plugin name="cordova-plugin-whitelist" spec="1" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+    <preference name="DisallowOverscroll" value="true" />
+    <engine name="android" spec="~6.0.0" />
+</widget>
