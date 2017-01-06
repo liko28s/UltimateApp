@@ -2,7 +2,9 @@
 {{#if model}}
   {{#paper-card as |card|}}
       <div class="layout-column flex-xs flex-gt-xs-50">
-        {{card.image src=model.profile_image alt=model.name title=model.name}}
+          {{#if model.profile_image}}
+            {{card.image src=model.profile_image alt=model.name title=model.name}}
+          {{/if}}
       </div>
       <div class="layout-row">
         {{#card.title as |title|}}

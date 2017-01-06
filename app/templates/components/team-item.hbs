@@ -1,5 +1,7 @@
 {{#paper-item class="md-3-line" onClick=(action (transition-to 'teams.detail' team.id)) as |control|}}
-  {{async-image src=team.profile_image alt=team.name class="md-avatar"}}
+  {{#if team.profile_image}}
+    {{async-image src=team.profile_image alt=team.name class="md-avatar"}}
+  {{/if}}
   <div class="md-list-item-text">
       <strong><h3><b>{{team.name}}</b></h3></strong>
     {{#if team.coach.id}}

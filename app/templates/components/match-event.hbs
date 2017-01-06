@@ -3,11 +3,27 @@
     {{#paper-icon "trending_up" accent=true}}{{/paper-icon}}
     <div class="md-list-item-text" style="border-right: 8px;border-left: 8px">
       {{event.date_time}}
+        <p>
+          {{#if event.description}}
+            {{event.description}}
+          {{else}}
+              Da Inicio el Encuentro
+          {{/if}}
+        </p>
+      {{paper-divider}}
+    </div>
+  {{/if}}
+
+  {{#if (eq event.event 2)}}
+    {{#paper-icon "star_rate" primary=true spin=true}}{{/paper-icon}}
+
+    <div class="md-list-item-text" style="border-right: 8px;border-left: 8px">
+      {{event.date_time}}
       <p>
         {{#if event.player_id.nick_name}}
           "{{event.player_id.nick_name}}" De
         {{else}}
-          "{{event.player_id.name}}" De
+          {{event.player_id.name}} De
         {{/if}}
         {{event.team_id.name}} Anotó
       </p>
@@ -20,20 +36,7 @@
     </div>
   {{/if}}
 
-  {{#if (eq event.event 2)}}
-    {{#paper-icon "star_rate" primary=true spin=true}}{{/paper-icon}}
-    <div class="md-list-item-text" style="border-right: 8px;border-left: 8px">
-      {{event.date_time}}
-      <p>
-        {{#if event.description}}
-          {{event.description}}
-        {{else}}
-          Da Inicio el Encuentro
-        {{/if}}
-      </p>
-      {{paper-divider}}
-    </div>
-  {{/if}}
+
 
   {{#if (eq event.event 3)}}
     {{#paper-icon "warning" warn=true}}{{/paper-icon}}
