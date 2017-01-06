@@ -20,7 +20,7 @@ Router.map(function() {
     this.route('finals');
   });
   this.route('donations');
-  this.route('calendar');
+  this.route('calendar', function() {});
   this.route('matches', function() {});
 });
 
