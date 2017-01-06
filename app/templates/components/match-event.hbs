@@ -4,8 +4,19 @@
     <div class="md-list-item-text" style="border-right: 8px;border-left: 8px">
       {{event.date_time}}
       <p>
-        Da Inicio el Encuentro
+        {{#if event.player_id.nick_name}}
+          "{{event.player_id.nick_name}}" De
+        {{else}}
+          "{{event.player_id.name}}" De
+        {{/if}}
+        {{event.team_id.name}} Anotó
       </p>
+      <p>
+        {{#if event.description}}
+          {{event.description}}
+        {{/if}}
+      </p>
+      {{paper-divider}}
     </div>
   {{/if}}
 
@@ -14,13 +25,13 @@
     <div class="md-list-item-text" style="border-right: 8px;border-left: 8px">
       {{event.date_time}}
       <p>
-        {{#if event.player_id.nick_name}}
-          "{{event.player_id.nick_name}}" De
-          {{else}}
-          "{{event.player_id.name}}" De
+        {{#if event.description}}
+          {{event.description}}
+        {{else}}
+          Da Inicio el Encuentro
         {{/if}}
-        {{event.team_id.name}} Anotó
       </p>
+      {{paper-divider}}
     </div>
   {{/if}}
 
@@ -36,8 +47,15 @@
         {{/if}}
         {{event.team_id.name}} Cometió una Falta
       </p>
+      <p>
+        {{#if event.description}}
+          {{event.description}}
+        {{/if}}
+      </p>
+      {{paper-divider}}
     </div>
   {{/if}}
+
   {{#if (eq event.event 4)}}
     {{#paper-icon "cached" primary=true spin=true}}{{/paper-icon}}
     <div class="md-list-item-text" style="border-right: 8px;border-left: 8px">
@@ -45,8 +63,15 @@
       <p>
         {{event.team_id.name}} Ha Realizado un Cambio
       </p>
+      <p>
+        {{#if event.description}}
+          {{event.description}}
+        {{/if}}
+      </p>
+      {{paper-divider}}
     </div>
   {{/if}}
+
   {{#if (eq event.event 5)}}
     {{#paper-icon "timer" primary=true}}{{/paper-icon}}
     <div class="md-list-item-text" style="border-right: 8px;border-left: 8px">
@@ -54,8 +79,15 @@
       <p>
         Tiempo Fuera Por {{event.team_id.name}}
       </p>
+      <p>
+        {{#if event.description}}
+          {{event.description}}
+        {{/if}}
+      </p>
+      {{paper-divider}}
     </div>
   {{/if}}
+
   {{#if (eq event.event 6)}}
     {{#paper-icon "trending_down" accent=true}}{{/paper-icon}}
     <div class="md-list-item-text" style="border-right: 8px;border-left: 8px">
@@ -63,6 +95,12 @@
       <p>
         Ha Finalizado el Partido
       </p>
+      <p>
+        {{#if event.description}}
+          {{event.description}}
+        {{/if}}
+      </p>
+      {{paper-divider}}
     </div>
   {{/if}}
 {{/paper-item}}
