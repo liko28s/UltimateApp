@@ -5,6 +5,10 @@ export default Ember.Controller.extend({
   title:'Calendario Eventos',
   init(){
     var app = this.get('application');
-    app.set('titleText',this.get('title'))
-  }
+    app.set('titleText',this.get('title'));
+  },
+  changeTitle(){
+    var app = this.get('application');
+    app.set('titleText',this.get('title'));
+  },
 });

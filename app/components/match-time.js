@@ -21,7 +21,7 @@ export default Ember.Component.extend({
       minutes =this.date.getMinutes()
     }
 
-    if(this.date.getHours() > 12) {
+    if(this.date.getHours() >= 12) {
 
       this.set('hour',this.date.getHours()-12+':'+minutes+' PM')
     } else {
