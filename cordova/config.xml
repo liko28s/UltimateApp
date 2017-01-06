@@ -1,5 +1,5 @@
 <?xml version='1.1' encoding='utf-8'?>
-<widget id="co.nextria.ultimateApp" version="1.1" android-versionCode="100004" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="co.nextria.ultimateApp" version="1.1.1" android-versionCode="100005" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Torneo Puerta de Oriente</name>
     <description>
       Con la aplicación estarás informado con solo unos toques en tu smartphone sobre equipos, jugadores, encuentros deportivos y fases del torneo de Ultimate Puerta de Oriente 2017
