@@ -11,23 +11,16 @@
       {{#paper-item class="layout-row less-padding"}}
         {{async-image src=match.team_one.profile_image alt=match.team_one.name class="md-avatar" style="margin-left: 8px;margin-right: 4px"}}
           <div class="md-list-item-text" style="border-right: 8px;border-left: 8px">
-            {{match.team_one.name}} VS {{match.team_two.name}}
+            <strong>{{match.team_one.name}} VS {{match.team_two.name}}</strong>
           </div>
         {{async-image src=match.team_two.profile_image alt=match.team_two.name class="md-avatar" style="margin-right: 8px;margin-left: 4px"}}
       {{/paper-item}}
     {{/paper-list}}
 
     {{!Hechos del Evento}}
-    {{#paper-list}}
-        <style>
-            .md-avatar.small{
-                width: 18px !important;
-                height:auto !important;
-            }
-        </style>
+    {{#paper-list align=center}}
         {{#each match.details as |event|}}
-          {{match-event event=event match=match}}
-          {{event.team_id.name}}
+          {{match-event event=event}}
         {{/each}}
     {{/paper-list}}
   {{/card.content}}
