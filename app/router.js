@@ -22,6 +22,11 @@ Router.map(function() {
   this.route('donations');
   this.route('calendar', function() {});
   this.route('matches', function() {});
+  this.route('loading');
+  this.route('events', function() {
+    this.route('add');
+    this.route('update');
+  });
 });
 
 export default Router;

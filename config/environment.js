@@ -5,7 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'ultimate-app',
     environment: environment,
     rootURL: '/',
-    locationType: 'hash',
+    defaultLocationType: 'hash',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -16,6 +16,11 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    cordova: {
+      rebuildOnChange: false,
+      emulate: false
     }
   };
 
@@ -29,6 +34,7 @@ module.exports = function(environment) {
 
   if (environment === 'test') {
     // Testem prefers this...
+    ENV.baseURL = '/';
     ENV.locationType = 'none';
 
     // keep test console output quieter
@@ -48,8 +54,17 @@ module.exports = function(environment) {
       'img-src': "'self' data:",
       'media-src': "'self'"
     };
-
   }
+
+  ENV['ember-loading-route'] = {
+    enabled: true,
+    commonRoutes: [
+      {
+        routeLevel: 5,
+        templateName: 'loading'
+      }
+    ]
+  };
 
   return ENV;
 };

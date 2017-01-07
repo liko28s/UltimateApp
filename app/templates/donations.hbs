@@ -2,13 +2,18 @@
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
     <input type="hidden" name="cmd" value="_s-xclick">
     <input type="hidden" name="hosted_button_id" value="E6UE9KC7WEM5Q">
-
   <div class="layout-row">
       Apoya Nuestro Trabajo Con
+  </div>
+  <div class="layout-row">
     {{#paper-select label="Tu Donacion" options=model value=donation onChange=(action (mut donation)) as |donations|}}
       {{donations.value}}
     {{/paper-select}}
+  </div>
+  <div class="layout-row">
       Dejanos tu correo para darte las gracias
+  </div>
+  <div class="layout-row">
     {{paper-input flex=30 name="os1" label="Correo Electronico" value=email onChange=(action (mut email))}}
   </div>
     <input type="hidden" name="currency_code" value="USD">
