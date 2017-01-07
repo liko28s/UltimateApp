@@ -4,13 +4,13 @@ export default Ember.Component.extend({
   positionalParams: ['date'],
   init(){
     this._super(...arguments);
-    if (this.date.getDay() == 6) {
+    if (this.date.getDay() === 6) {
       this.set('dayName','Sabado');
       this.set('day',7)
-    } else if (this.date.getDay() == 7) {
+    } else if (this.date.getDay() === 0) {
       this.set('dayName','Domingo');
       this.set('day',8)
-    } else if(this.date.getDay() == 1) {
+    } else if(this.date.getDay() === 1) {
       this.set('dayName', 'Lunes');
       this.set('day',9)
     }

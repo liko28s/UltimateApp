@@ -1,38 +1,17 @@
 {{title "Calendario"}}
-{{#each model as |match|}}
-  {{#paper-card as |card|}}
-    {{#card.title as |title|}}
-      {{#title.text as |text|}}
-        {{#text.headline}}
-          {{match-time date=match.match_time}}
-        {{/text.headline}}
-        {{#text.subhead}}
-            Cancha {{match.arena_id}}
-        {{/text.subhead}}
-      {{/title.text}}
-    {{/card.title}}
-    {{#card.content}}
-      {{#paper-list align=center class="layout-row"}}
-        {{#paper-item class="layout-row"}}
-          {{async-image src=match.team_one.profile_image alt=match.team_one.name class="md-avatar"}}
-            <div class="md-list-item-text">{{match.team_one.name}}</div>
-        {{/paper-item}}
+{{#paper-toolbar as |toolbar|}}
+  {{#paper-toolbar-tools class="no-padding"}}
+    {{#paper-button noInk=true class="no-padding" onClick=(transition-to 'calendar.saturday')}}
+      Sabado 7
+    {{/paper-button}}
 
-        {{#paper-item class="md-1-line"}}
-            VS
-        {{/paper-item}}
+    {{#paper-button noInk=true class="no-padding" onClick=(transition-to 'calendar.sunday')}}
+      Domingo 8
+    {{/paper-button}}
 
-        {{#paper-item class="layout-row"}}
-            <div class="md-list-item-text">{{match.team_two.name}}</div>
-            {{async-image src=match.team_two.profile_image alt=match.team_two.name class="md-avatar"}}
-        {{/paper-item}}
-
-      {{/paper-list}}
-    {{/card.content}}
-    {{#card.actions}}
-    {{/card.actions}}
-  {{/paper-card}}
-
-{{else}}
-    <h3 align="center">No Hay Eventos en el Calendario</h3>
-{{/each}}
+    {{#paper-button noInk=true class="no-padding" onClick=(transition-to 'calendar.monday')}}
+      Lunes 9
+    {{/paper-button}}
+  {{/paper-toolbar-tools}}
+{{/paper-toolbar}}
+{{outlet}}

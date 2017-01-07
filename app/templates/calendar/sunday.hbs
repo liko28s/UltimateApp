@@ -1,0 +1,36 @@
+{{#each model as |match|}}
+  {{#if (is-sunday match.match_time)}}
+    {{#paper-card as |card|}}
+      {{#card.title as |title|}}
+        {{#title.text as |text|}}
+          {{#text.headline}}
+            {{match-time date=match.match_time}}
+          {{/text.headline}}
+          {{#text.subhead}}
+            Cancha {{match.arena_id}}
+          {{/text.subhead}}
+        {{/title.text}}
+      {{/card.title}}
+      {{#card.content}}
+        {{#paper-list align=center class="layout-row"}}
+          {{#paper-item class="layout-row"}}
+            {{async-image src=match.team_one.profile_image alt=match.team_one.name class="md-avatar"}}
+            <div class="md-list-item-text">{{match.team_one.name}}</div>
+          {{/paper-item}}
+          {{#paper-item class="md-1-line"}}
+            VS
+          {{/paper-item}}
+          {{#paper-item class="layout-row"}}
+            <div class="md-list-item-text">{{match.team_two.name}}</div>
+            {{async-image src=match.team_two.profile_image alt=match.team_two.name class="md-avatar"}}
+          {{/paper-item}}
+
+        {{/paper-list}}
+      {{/card.content}}
+      {{#card.actions}}
+      {{/card.actions}}
+    {{/paper-card}}
+  {{/if}}
+{{else}}
+  <h3 align="center">No Hay Eventos en el Calendario</h3>
+{{/each}}

@@ -1,1 +1,8 @@
-{{outlet}}
+<div class="layout layout-sm-column">
+  {{paper-input flex=30 label="Partido" value=name onChange=(action (mut name))}}
+  {{paper-input flex=30 label="Hora y Fecha" type="datetime" value=email onChange=(action (mut email))}}
+  {{paper-input flex=40 label="Equipo" type="password" value=password onChange=(action (mut password))}}
+  {{paper-input flex=40 label="jugador" type="password" value=password onChange=(action (mut password))}}
+  {{paper-input flex=40 label="Evento" type="password" value=password onChange=(action (mut password))}}
+  {{paper-input textarea=true block=true label="descripcion" maxlength=150 passThru=(hash rows=5 maxRows=5) value=biography onChange=(action (mut biography))}}
+</div>
