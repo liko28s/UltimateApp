@@ -39,6 +39,10 @@
           {{paper-icon "people"}}
           <p>Equipos</p>
         {{/paper-item}}
+        {{#paper-item onClick=(action (transition-to 'events.add'))}}
+          {{paper-icon "backup"}}
+          <p>Añadir Evento</p>
+        {{/paper-item}}
 
         {{#paper-item onClick=(action (transition-to 'donations'))}}
           {{paper-icon "face"}}
@@ -62,7 +66,7 @@
         </h3>
         <span class="flex"></span>
         {{!TODO añadir algo util aqui, por ejemplo creditos y cosas de nextria}}
-        {{#paper-button iconButton=true href=''}}
+        {{#paper-button iconButton=true onClick=(action (transition-to 'index'))}}
           {{paper-icon "cached"}}
         {{/paper-button}}
       {{/paper-toolbar-tools}}

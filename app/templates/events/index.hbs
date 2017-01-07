@@ -1,1 +1,11 @@
-{{outlet}}
+{{title title}}
+{{#paper-list}}
+  {{#each model as |match|}}
+    {{#paper-item match=match onClick=(action (transition-to 'events.add' match.id))}}
+      partido
+    {{/paper-item}}
+  {{else}}
+    <h3 align="center">No Hay Partidos en Curso</h3>
+  {{/each}}
+{{/paper-list}}
+
