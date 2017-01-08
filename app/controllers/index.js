@@ -5,6 +5,10 @@ export default Ember.Controller.extend({
   title:'Partidos',
   init(){
     var app = this.get('application');
-    app.set('titleText',this.get('title'))
-  }
+    app.set('titleText',this.get('title'));
+  },
+  changeTitle(){
+    var app = this.get('application');
+    app.set('titleText',this.get('title'));
+  },
 });

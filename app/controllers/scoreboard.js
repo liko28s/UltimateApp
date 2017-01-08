@@ -5,7 +5,11 @@ export default Ember.Controller.extend({
   application: Ember.inject.controller('application'),
   title:'Fases del Torneo',
   init(){
-    var app = this.get('application');
-    app.set('titleText',this.get('title'))
-  }
+  var app = this.get('application');
+  app.set('titleText',this.get('title'));
+},
+changeTitle(){
+  var app = this.get('application');
+  app.set('titleText',this.get('title'));
+},
 });

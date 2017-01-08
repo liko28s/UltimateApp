@@ -16,15 +16,15 @@
             <div class="layout-row" align="center">
                 <div class="layout-column flex layout-align-center">
                     <u>PJ</u>
-                    <span>{{team.matches.length}}</span>
+                    <span>{{team.pj}}</span>
                 </div>
                 <div class="layout-column flex layout-align-center">
                     <u>PG</u>
-                    <span>{{team.matches.length}}</span>
+                    <span>{{team.pg}}</span>
                 </div>
                 <div class="layout-column flex layout-align-center">
                     <u>PP</u>
-                    <span>{{team.matches.length}}</span>
+                    <span>{{sub team.pj team.pg}}</span>
                 </div>
             </div>
             <div class="layout-row">
@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="layout-row flex layout-align-center">
-            <strong>{{team.points}} Puntos</strong>
+            <strong>{{multiply team.pg 3}} Puntos</strong>
         </div>
       {{/paper-item}}
     {{/each}}

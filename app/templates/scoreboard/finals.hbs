@@ -1,1 +1,53 @@
-{{#paper-subheader}}En Construccion{{/paper-subheader}}
+{{#each model as |match|}}
+  {{#if (eq match.phase 4)}}
+    {{#paper-card as |card|}}
+      {{#card.title as |title|}}
+        {{#title.text as |text|}}
+          {{#text.headline}}
+            {{match-time date=match.match_time}}
+          {{/text.headline}}
+          {{#text.subhead}}
+            Cancha {{match.arena_id}}
+          {{/text.subhead}}
+        {{/title.text}}
+      {{/card.title}}
+      {{#card.content}}
+        {{#paper-list align=center class="layout-row"}}
+          {{#paper-list align=center class="layout-row"}}
+            <table>
+              <tr>
+                <td>
+                  {{#paper-item class="layout-column"}}
+                    {{async-image src=match.team_one.profile_image alt=match.team_one.name class="md-avatar left"}}
+                    <div class="md-list-item-text">{{match.team_one.name}}</div>
+                  {{/paper-item}}
+                </td>
+                <td>
+                  {{#paper-item class="md-1-line"}}
+                    <b>VS</b>
+                  {{/paper-item}}
+                </td>
+                <td>
+                  {{#paper-item class="layout-column"}}
+                    <div class="md-list-item-text">{{match.team_two.name}}</div>
+                    {{async-image src=match.team_two.profile_image alt=match.team_two.name class="md-avatar right"}}
+                  {{/paper-item}}
+                </td>
+              </tr>
+              <tr>
+                <td align="center"><b>{{score match.details match.team_one.id}}</b></td>
+                <td></td>
+                <td align="center"><b>{{score match.details match.team_two.id}}</b></td>
+              </tr>
+            </table>
+          {{/paper-list}}
+
+        {{/paper-list}}
+      {{/card.content}}
+      {{#card.actions}}
+      {{/card.actions}}
+    {{/paper-card}}
+  {{/if}}
+{{else}}
+  <h3 align="center">No Hay Eventos para esta Fase</h3>
+{{/each}}

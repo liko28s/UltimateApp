@@ -14,18 +14,32 @@
       {{#card.content}}
         {{#paper-list align=center class="layout-row"}}
           {{#paper-list align=center class="layout-row"}}
-            {{#paper-item class="layout-column"}}
-              {{async-image src=match.team_one.profile_image alt=match.team_one.name class="md-avatar left"}}
-              <div class="md-list-item-text">{{match.team_one.name}}</div>
-            {{/paper-item}}
-            {{#paper-item class="md-1-line"}}
-              <b>VS</b>
-            {{/paper-item}}
-            {{#paper-item class="layout-column"}}
-              <div class="md-list-item-text">{{match.team_two.name}}</div>
-              {{async-image src=match.team_two.profile_image alt=match.team_two.name class="md-avatar right"}}
-            {{/paper-item}}
-
+            <table>
+              <tr>
+                <td>
+                  {{#paper-item class="layout-column"}}
+                    {{async-image src=match.team_one.profile_image alt=match.team_one.name class="md-avatar left"}}
+                    <div class="md-list-item-text">{{match.team_one.name}}</div>
+                  {{/paper-item}}
+                </td>
+                <td>
+                  {{#paper-item class="md-1-line"}}
+                    <b>VS</b>
+                  {{/paper-item}}
+                </td>
+                <td>
+                  {{#paper-item class="layout-column"}}
+                    <div class="md-list-item-text">{{match.team_two.name}}</div>
+                    {{async-image src=match.team_two.profile_image alt=match.team_two.name class="md-avatar right"}}
+                  {{/paper-item}}
+                </td>
+              </tr>
+              <tr>
+                <td align="center"><b>{{score match.details match.team_one.id}}</b></td>
+                <td></td>
+                <td align="center"><b>{{score match.details match.team_two.id}}</b></td>
+              </tr>
+            </table>
           {{/paper-list}}
 
         {{/paper-list}}
