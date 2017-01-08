@@ -1,91 +1,96 @@
 <h3>Añadir Evento</h3>
 <form {{action 'submit' on='submit'}}>
-  <p>
-    Partido
-    {{#paper-radio-group
-      groupValue=(readonly selectedMatch)
-      onChange=(action (mut selectedMatch)) as |group|}}
+
+  {{#if model}}
+    <p>
+      Seleccione un Partido
+
+      {{#paper-radio-group
+        groupValue=(readonly selectedMatch)
+        onChange=(action (mut selectedMatch)) as |group|}}
+        {{#each model as |match|}}
+          {{#group.radio value=match.id primary=true}} {{match.team_one.name}} VS {{match.team_two.name}} {{/group.radio}}
+        {{/each}}
+      {{/paper-radio-group}}
+
       {{#each model as |match|}}
-        {{#group.radio value=match.id primary=true}} {{match.team_one.name}} VS {{match.team_two.name}} {{/group.radio}}
-      {{/each}}
-    {{/paper-radio-group}}
-
-
-    {{#each model as |match|}}
-      {{#if (eq match.id selectedMatch)}}
-        Equipo
-        {{#paper-radio-group
-          groupValue=(readonly selectedTeam)
-          onChange=(action (mut selectedTeam)) as |group|}}
+        {{#if (eq match.id selectedMatch)}}
+          Equipo
+          {{#paper-radio-group
+            groupValue=(readonly selectedTeam)
+            onChange=(action (mut selectedTeam)) as |group|}}
             {{#group.radio value=match.team_one primary=true }} {{match.team_one.name}}{{/group.radio}}
             {{#group.radio value=match.team_two primary=true }} {{match.team_two.name}}{{/group.radio}}
-        {{/paper-radio-group}}
-        {{!Jugadores}}
-      {{#if (eq match.team_one selectedTeam)}}
-        {{#paper-autocomplete
-          disabled=firstDisabled
-          items=playersItems
-          allowClear=true
-          search=(action 'searchPlayers' match.team_one.players)
-          searchText=(readonly playerSearchText)
-          onSearchTextChange=(action (mut playerSearchText))
-          selected=selectedPlayer
-          searchField=(concat "name" "last_name" "nick_name")
-          labelPath="full_name"
-          placeholder="Seleccione un Jugador..."
-          loadingMessage="Buscando Jugador..."
-          noMatchesMessage="No Encontramos el Jugador"
-          onSelectionChange=(action (mut selectedPlayer)) as |player autocomplete|}}
-          {{paper-autocomplete-highlight
-            label=(concat player.name ' ' player.last_name ' "' player.nick_name '"')
-            searchText=autocomplete.searchText
-            flags="i"}}
-        {{/paper-autocomplete}}
+          {{/paper-radio-group}}
+          {{!Jugadores}}
+          {{#if (eq match.team_one selectedTeam)}}
+            {{#paper-autocomplete
+              disabled=firstDisabled
+              items=playersItems
+              allowClear=true
+              search=(action 'searchPlayers' match.team_one.players)
+              searchText=(readonly playerSearchText)
+              onSearchTextChange=(action (mut playerSearchText))
+              selected=selectedPlayer
+              searchField=(concat "name" "last_name" "nick_name")
+              labelPath="full_name"
+              placeholder="Seleccione un Jugador..."
+              loadingMessage="Buscando Jugador..."
+              noMatchesMessage="No Encontramos el Jugador"
+              onSelectionChange=(action (mut selectedPlayer)) as |player autocomplete|}}
+              {{paper-autocomplete-highlight
+                label=(concat player.name ' ' player.last_name ' "' player.nick_name '"')
+                searchText=autocomplete.searchText
+                flags="i"}}
+            {{/paper-autocomplete}}
 
-      {{/if}}
+          {{/if}}
 
-        {{#if (eq match.team_two selectedTeam)}}
-          {{#paper-autocomplete
-            disabled=firstDisabled
-            items=playersItems
-            allowClear=true
-            search=(action 'searchPlayers' match.team_two.players)
-            searchText=(readonly playerSearchText)
-            onSearchTextChange=(action (mut playerSearchText))
-            selected=selectedPlayer
-            searchField=(concat "name" "last_name" "nick_name")
-            labelPath="full_name"
-            placeholder="Seleccione un Jugador..."
-            loadingMessage="Buscando Jugador..."
-            noMatchesMessage="No Encontramos el Jugador"
-            onSelectionChange=(action (mut selectedPlayer)) as |player autocomplete|}}
-            {{paper-autocomplete-highlight
-              label=(concat player.name ' ' player.last_name ' "' player.nick_name '"')
-              searchText=autocomplete.searchText
-              flags="i"}}
-          {{/paper-autocomplete}}
+          {{#if (eq match.team_two selectedTeam)}}
+            {{#paper-autocomplete
+              disabled=firstDisabled
+              items=playersItems
+              allowClear=true
+              search=(action 'searchPlayers' match.team_two.players)
+              searchText=(readonly playerSearchText)
+              onSearchTextChange=(action (mut playerSearchText))
+              selected=selectedPlayer
+              searchField=(concat "name" "last_name" "nick_name")
+              labelPath="full_name"
+              placeholder="Seleccione un Jugador..."
+              loadingMessage="Buscando Jugador..."
+              noMatchesMessage="No Encontramos el Jugador"
+              onSelectionChange=(action (mut selectedPlayer)) as |player autocomplete|}}
+              {{paper-autocomplete-highlight
+                label=(concat player.name ' ' player.last_name ' "' player.nick_name '"')
+                searchText=autocomplete.searchText
+                flags="i"}}
+            {{/paper-autocomplete}}
 
+          {{/if}}
         {{/if}}
-      {{/if}}
-    {{/each}}
+      {{/each}}
 
-    {{paper-input label="Hora y Fecha" type="datetime-local" value=date_time onChange=(action (mut date_time))}}
-    {{#paper-autocomplete
-      disabled=firstDisabled
-      options=events
-      allowClear=true
-      selected=selectedEvent
-      labelPath="name"
-      placeholder="Seleccione un Evento..."
-      onSelectionChange=(action (mut selectedEvent)) as |event autocomplete|}}
-      {{paper-autocomplete-highlight
-        label=event.name
-        searchText=select.searchText
-        flags="i"}}
-    {{/paper-autocomplete}}
-    {{paper-input textarea=true block=true label="descripcion" maxlength=150 passThru=(hash rows=2 maxRows=2) value=description onChange=(action (mut description))}}
-  </p>
-  {{#paper-button type='submit' primary=true}}
-    Enviar
-  {{/paper-button}}
+      {{paper-input label="Hora y Fecha" type="datetime-local" value=date_time onChange=(action (mut date_time))}}
+      {{#paper-autocomplete
+        disabled=firstDisabled
+        options=events
+        allowClear=true
+        selected=selectedEvent
+        labelPath="name"
+        placeholder="Seleccione un Evento..."
+        onSelectionChange=(action (mut selectedEvent)) as |event autocomplete|}}
+        {{paper-autocomplete-highlight
+          label=event.name
+          searchText=select.searchText
+          flags="i"}}
+      {{/paper-autocomplete}}
+      {{paper-input textarea=true block=true label="Detalles del Evento" maxlength=150 passThru=(hash rows=2 maxRows=2) value=description onChange=(action (mut description))}}
+    </p>
+    {{#paper-button type='submit' primary=true}}
+      Enviar
+    {{/paper-button}}
+  {{else}}
+    No hay Partidos en Curso
+  {{/if}}
 </form>
