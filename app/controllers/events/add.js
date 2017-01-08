@@ -23,7 +23,7 @@ export default Ember.Controller.extend({
         description: this.description,
       });
       event.save();
-      this.transitionToRoute('index')
+      this.transitionToRoute('index');
 
     },
     setPlayers(playersProxy) {
@@ -33,12 +33,12 @@ export default Ember.Controller.extend({
       let term = this.get('playerSearchText');
       return playersProxy.toArray().sort(function (a, b) {
         if((a.name+a.last_name).toLowerCase().includes(term.toLowerCase())) {
-          return -1
+          return -1;
         }else {
           if ((b.name+b.last_name).toLowerCase().includes(term.toLowerCase())){
-            return 1
+            return 1;
           }
-          return 0
+          return 0;
         }
       })
     }
